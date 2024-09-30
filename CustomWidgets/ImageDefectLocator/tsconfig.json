@@ -1,9 +1,0 @@
-{
-    "extends": "@mendix/pluggable-widgets-tools/configs/tsconfig.base",
-    "compilerOptions": {
-        "baseUrl": "./",
-        "jsx": "react-jsx",
-        "jsxFactory": ""
-    },
-    "include": ["./src", "./typings", "**/*.ts", "**/*.tsx"]
-}

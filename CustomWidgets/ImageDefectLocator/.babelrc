@@ -1,9 +1,0 @@
-{
-    "presets": ["@babel/preset-env", "@babel/preset-react", "@babel/preset-typescript"],
-    "plugins": ["@babel/plugin-transform-runtime"],
-    "generatorOpts": {
-        "maxSize": 1000, // Increase the size limit if needed
-        "retainLines": true,
-        "compact": false
-    }
-}
