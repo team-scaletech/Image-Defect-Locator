@@ -31,7 +31,6 @@ const DefectLocatImage: FC<DefectLocatorProps> = () => {
                     resolve({ src: reader.result as string, defects: [] });
                 };
                 reader.onerror = () => {
-                    console.error("File reading failed");
                     resolve({ src: "", defects: [] }); // Handle errors gracefully
                 };
             });
