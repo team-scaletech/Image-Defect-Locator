@@ -1,13 +1,14 @@
 import { Key, useState } from "react";
 // import Konva from "konva"; // Import Konva directly
 // import { Stage, Layer, Image as KonvaImage } from "react-konva";
-// import useImage from "use-image";
+import useImage from "use-image";
 // import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 // import { faExclamation } from "@fortawesome/free-solid-svg-icons"; // Import the specific icon
 
 const DentMarker = (props: any) => {
-    // const [image] = useImage(props.src); // Use image path from props
-    const [image] = props.src;
+    const [image] = useImage(props.src); // Use image path from props
+    // const [image] = props.src;
+    console.warn(">>>>>", image);
     const [hoveredDentIndex, setHoveredDentIndex] = useState<number | null>(null);
 
     const handleClick = (e: any) => {
@@ -38,9 +39,9 @@ const DentMarker = (props: any) => {
                     <KonvaImage image={image} width={800} height={600} />
                 </Layer>
             </Stage> */}
-            <div style={{ width: "800px", height: "600px", position: "relative" }} onClick={handleClick}>
+            <div style={{ width: "800px", height: "600px", position: "relative" }} onClick={e => handleClick(e)}>
                 <div>
-                    <img src={image as any} style={{ width: "800px", height: "600px" }} />
+                    <img src={image?.src as any} style={{ width: "800px", height: "600px" }} />
                 </div>
             </div>
 
