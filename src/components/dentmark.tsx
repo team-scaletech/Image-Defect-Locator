@@ -1,25 +1,18 @@
-import { Key, useState } from "react";
-// import Konva from "konva"; // Import Konva directly
-// import { Stage, Layer, Image as KonvaImage } from "react-konva";
-import useImage from "use-image";
-// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-// import { faExclamation } from "@fortawesome/free-solid-svg-icons"; // Import the specific icon
+import { useState } from "react";
 
 const DentMarker = (props: any) => {
-    const [image] = useImage(props.src); // Use image path from props
-    // const [image] = props.src;
-    console.warn(">>>>>", image);
     const [hoveredDentIndex, setHoveredDentIndex] = useState<number | null>(null);
 
     const handleClick = (e: any) => {
-        const stage = e.target.getStage();
-        const pointerPosition = stage.getPointerPosition();
+        const rect = e.target.getBoundingClientRect();
+        const x = e.clientX - rect.left; // x position relative to the image
+        const y = e.clientY - rect.top; // y position relative to the image
 
         // Prompt user for custom text
         const dentText = prompt("Enter description for the dent:") || "No description";
 
         // Add the dent with custom text
-        const newDefect = { ...pointerPosition, note: dentText };
+        const newDefect = { x, y, note: dentText };
         props.addDefect(newDefect);
     };
 
@@ -33,18 +26,7 @@ const DentMarker = (props: any) => {
 
     return (
         <div style={{ position: "relative" }}>
-            {/* Konva Stage */}
-            {/* <Stage width={800} height={600} onClick={handleClick} style={{ position: "relative" }}>
-                <Layer>
-                    <KonvaImage image={image} width={800} height={600} />
-                </Layer>
-            </Stage> */}
-            <div style={{ width: "800px", height: "600px", position: "relative" }} onClick={e => handleClick(e)}>
-                <div>
-                    <img src={image?.src as any} style={{ width: "800px", height: "600px" }} />
-                </div>
-            </div>
-
+            <img src={props.src} alt="Dent marker" style={{ width: "800px", height: "600px" }} onClick={handleClick} />
             {/* Overlay the icons as HTML elements */}
             {props.defects.map((dent: { x: number; y: number }, index: number) => (
                 <div
@@ -53,14 +35,13 @@ const DentMarker = (props: any) => {
                     style={{
                         position: "absolute",
                         left: `${dent.x - 12}px`, // Adjust to center the icon
-                        top: `${dent.y - 12}px` // Adjust to center the icon // Ensure it appears above the canvas
+                        top: `${dent.y - 12}px` // Adjust to center the icon
                     }}
                     onMouseEnter={() => handleMouseEnter(index)}
                     onMouseLeave={handleMouseLeave}
                 >
                     <div className="circle pulse defect-icon ">
-                        {/* <FontAwesomeIcon icon={faExclamation} /> */}
-                        <p>test</p>
+                        <h2 className="exclamation-icon">!</h2>
                     </div>
                 </div>
             ))}
@@ -71,25 +52,16 @@ const DentMarker = (props: any) => {
                         x: number;
                         y: number;
                     },
-                    index: Key
+                    index: number
                 ) => {
-                    // const tempText = new Konva.Text({
-                    //     text: dent.note,
-                    //     fontSize: 12,
-                    //     width: 150, // Max width for wrapping text
-                    //     padding: 10,
-                    //     wrap: "word"
-                    // });
+                    // Measure the width of the note text
+                    const textWidth = dent.note.length * 8; // Estimate width based on character length
+                    const boxWidth = Math.min(Math.max(textWidth + 20, 150), 200); // Limit the width
+                    const boxHeight = 100; // Fixed height or calculate based on text
 
-                    // const textHeight = tempText.getHeight();
-                    const textWidth = 100;
-                    const boxWidth = Math.max(textWidth + 20, 150); // Ensure a minimum width
-                    const boxHeight = 100; // Adjust height based on text content
+                    const boxX = dent.x + 10;
+                    const boxY = dent.y - boxHeight;
 
-                    const boxX = dent.x + 10; // Adjust x for padding
-                    const boxY = dent.y - boxHeight - 10; // Adjust y for text above the dent
-
-                    // Calculate adjusted positions to prevent overflow
                     const adjustedX = Math.min(Math.max(boxX, 0), 800 - boxWidth);
                     const adjustedY = Math.min(Math.max(boxY, 0), 600 - boxHeight);
 
@@ -100,7 +72,9 @@ const DentMarker = (props: any) => {
                                     style={{
                                         position: "absolute",
                                         left: adjustedX,
-                                        top: adjustedY
+                                        top: adjustedY,
+                                        width: boxWidth,
+                                        height: boxHeight
                                     }}
                                     className="defect-marker-description"
                                     onMouseEnter={() => handleMouseEnter(index)}
