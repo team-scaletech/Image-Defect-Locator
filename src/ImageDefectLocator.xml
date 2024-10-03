@@ -14,12 +14,48 @@
     <icon />
     <properties>
         <propertyGroup caption="Data source">
-            <property key="imageAttribute" type="attribute" required="true">
-                <caption>Attribute (path)</caption>
-                <description />
+            <property key="imageData" type="attribute">
+                <caption>Image Data</caption>
+                <description>Base64 string of the image.</description>
                 <attributeTypes>
                     <attributeType name="String" />
                 </attributeTypes>
+            </property>
+            <property key="defectsData" type="object" required="true" isList="true">
+                <caption>Defect Data</caption>
+                <description />
+                <properties>
+                    <propertyGroup caption="Object list group">
+                        <property key="XPositionAttribute" type="attribute" required="true">
+                            <caption>XPosition (path)</caption>
+                            <description />
+                            <attributeTypes>
+                                <attributeType name="Decimal" />
+                            </attributeTypes>
+                        </property>
+                        <property key="YPositionAttribute" type="attribute" required="true">
+                            <caption>YPosition (path)</caption>
+                            <description />
+                            <attributeTypes>
+                                <attributeType name="Decimal" />
+                            </attributeTypes>
+                        </property>
+                        <property key="noteAttribute" type="attribute" required="true">
+                            <caption>Note (path)</caption>
+                            <description />
+                            <attributeTypes>
+                                <attributeType name="String" />
+                            </attributeTypes>
+                        </property>
+                    </propertyGroup>
+                </properties>
+            </property>
+        </propertyGroup>
+
+        <propertyGroup caption="Events">
+            <property key="imageAction" type="action">
+                <caption>onChange</caption>
+                <description />
             </property>
         </propertyGroup>
     </properties>

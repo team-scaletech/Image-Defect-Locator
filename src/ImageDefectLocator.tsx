@@ -5,6 +5,6 @@ import { ImageDefectLocatorContainerProps } from "../typings/ImageDefectLocatorP
 
 import "./ui/ImageDefectLocator.css";
 
-export const ImageDefectLocator: FC<ImageDefectLocatorContainerProps> = () => {
-    return <DefectLocatImage />;
+export const ImageDefectLocator: FC<ImageDefectLocatorContainerProps> = ({ imageData, defectsData }) => {
+    return <DefectLocatImage imageData={imageData} defectsData={defectsData} />;
 };

@@ -4,14 +4,29 @@
  * @author Mendix Widgets Framework Team
  */
 import { CSSProperties } from "react";
-import { EditableValue } from "mendix";
+import { ActionValue, EditableValue } from "mendix";
+import { Big } from "big.js";
+
+export interface DefectsDataType {
+    XPositionAttribute: EditableValue<Big>;
+    YPositionAttribute: EditableValue<Big>;
+    noteAttribute: EditableValue<string>;
+}
+
+export interface DefectsDataPreviewType {
+    XPositionAttribute: string;
+    YPositionAttribute: string;
+    noteAttribute: string;
+}
 
 export interface ImageDefectLocatorContainerProps {
     name: string;
     class: string;
     style?: CSSProperties;
     tabIndex?: number;
-    imageAttribute: EditableValue<string>;
+    imageData: EditableValue<string>;
+    defectsData: DefectsDataType[];
+    imageAction?: ActionValue;
 }
 
 export interface ImageDefectLocatorPreviewProps {
@@ -24,5 +39,7 @@ export interface ImageDefectLocatorPreviewProps {
     styleObject?: CSSProperties;
     readOnly: boolean;
     renderMode?: "design" | "xray" | "structure";
-    imageAttribute: string;
+    imageData: string;
+    defectsData: DefectsDataPreviewType[];
+    imageAction: {} | null;
 }
