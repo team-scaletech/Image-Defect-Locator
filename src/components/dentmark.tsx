@@ -1,6 +1,11 @@
-import { useState } from "react";
+import { FC, useState } from "react";
+import { Defect, ImageData } from "src/ImageDefectLocator";
 
-const DentMarker = (props: any) => {
+interface DefectLocatorProps {
+    imageValue: ImageData;
+    addDefect: (defect: Defect) => void;
+}
+const DentMarker: FC<DefectLocatorProps> = ({ imageValue, addDefect }) => {
     const [hoveredDentIndex, setHoveredDentIndex] = useState<number | null>(null);
 
     const handleClick = (e: any) => {
@@ -13,7 +18,8 @@ const DentMarker = (props: any) => {
 
         // Add the dent with custom text
         const newDefect = { x, y, note: dentText };
-        props.addDefect(newDefect);
+
+        addDefect(newDefect);
     };
 
     const handleMouseEnter = (index: number) => {
@@ -26,10 +32,15 @@ const DentMarker = (props: any) => {
 
     return (
         <div style={{ position: "relative" }}>
-            <img src={props.src} alt="Dent marker" style={{ width: "800px", height: "600px" }} onClick={handleClick} />
+            <img
+                src={imageValue.src}
+                alt="Dent marker"
+                style={{ width: "800px", height: "600px" }}
+                onClick={handleClick}
+            />
             {/* Overlay the icons as HTML elements */}
-            {props.defects &&
-                props.defects.map((dent: { x: number; y: number }, index: number) => (
+            {imageValue.defects &&
+                imageValue.defects.map((dent: { x: number; y: number }, index: number) => (
                     <div
                         key={index}
                         className="defect-marker"
@@ -46,8 +57,8 @@ const DentMarker = (props: any) => {
                         </div>
                     </div>
                 ))}
-            {props.defects &&
-                props.defects.map(
+            {imageValue.defects &&
+                imageValue.defects.map(
                     (
                         dent: {
                             note: string;

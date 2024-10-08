@@ -14,13 +14,11 @@
     <icon />
     <properties>
         <propertyGroup caption="Data source">
-            <property key="imageData" type="attribute">
-                <caption>Image Data</caption>
-                <description>Base64 string of the image.</description>
-                <attributeTypes>
-                    <attributeType name="String" />
-                </attributeTypes>
+            <property key="ImageUrl" type="image" required="true">
+                <caption>Thumbs Up Image</caption>
+                <description>Select an image to be displayed in the widget.</description>
             </property>
+
             <property key="defectsData" type="object" required="true" isList="true">
                 <caption>Defect Data</caption>
                 <description />
@@ -30,14 +28,14 @@
                             <caption>XPosition (path)</caption>
                             <description />
                             <attributeTypes>
-                                <attributeType name="Decimal" />
+                                <attributeType name="String" />
                             </attributeTypes>
                         </property>
                         <property key="YPositionAttribute" type="attribute" required="true">
                             <caption>YPosition (path)</caption>
                             <description />
                             <attributeTypes>
-                                <attributeType name="Decimal" />
+                                <attributeType name="String" />
                             </attributeTypes>
                         </property>
                         <property key="noteAttribute" type="attribute" required="true">
@@ -51,11 +49,15 @@
                 </properties>
             </property>
         </propertyGroup>
-
         <propertyGroup caption="Events">
-            <property key="imageAction" type="action">
-                <caption>onChange</caption>
+            <property key="markerAction" type="action" required="true">
+                <caption>onChange Marker Action</caption>
                 <description />
+            </property>
+
+            <property key="onChangeAction" type="action" required="true">
+                <caption>onChange Image afterction</caption>
+                <description>Action to trigger after uploading a file/image</description>
             </property>
         </propertyGroup>
     </properties>
