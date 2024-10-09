@@ -4,19 +4,7 @@
  * @author Mendix Widgets Framework Team
  */
 import { CSSProperties } from "react";
-import { ActionValue, DynamicValue, EditableValue, WebImage } from "mendix";
-
-export interface DefectsDataType {
-    XPositionAttribute: EditableValue<string>;
-    YPositionAttribute: EditableValue<string>;
-    noteAttribute: EditableValue<string>;
-}
-
-export interface DefectsDataPreviewType {
-    XPositionAttribute: string;
-    YPositionAttribute: string;
-    noteAttribute: string;
-}
+import { ActionValue, DynamicValue, EditableValue, ListValue, WebImage } from "mendix";
 
 export interface ImageDefectLocatorContainerProps {
     name: string;
@@ -24,7 +12,10 @@ export interface ImageDefectLocatorContainerProps {
     style?: CSSProperties;
     tabIndex?: number;
     ImageUrl: DynamicValue<WebImage>;
-    defectsData: DefectsDataType[];
+    objectsDatasource?: ListValue;
+    XPositionAttribute?: EditableValue<string>;
+    YPositionAttribute?: EditableValue<string>;
+    noteAttribute?: EditableValue<string>;
     markerAction?: ActionValue;
     onChangeAction?: ActionValue;
 }
@@ -39,8 +30,11 @@ export interface ImageDefectLocatorPreviewProps {
     styleObject?: CSSProperties;
     readOnly: boolean;
     renderMode?: "design" | "xray" | "structure";
-    ImageUrl: { type: "static"; imageUrl: string; } | { type: "dynamic"; entity: string; } | null;
-    defectsData: DefectsDataPreviewType[];
+    ImageUrl: { type: "static"; imageUrl: string } | { type: "dynamic"; entity: string } | null;
+    objectsDatasource: {} | { caption: string } | { type: string } | null;
+    XPositionAttribute: string;
+    YPositionAttribute: string;
+    noteAttribute: string;
     markerAction: {} | null;
     onChangeAction: {} | null;
 }

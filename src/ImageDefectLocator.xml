@@ -18,35 +18,30 @@
                 <caption>Thumbs Up Image</caption>
                 <description>Select an image to be displayed in the widget.</description>
             </property>
-
-            <property key="defectsData" type="object" required="true" isList="true">
-                <caption>Defect Data</caption>
+            <property key="objectsDatasource" type="datasource" isList="true" required="false">
+                <caption>Selectable objects</caption>
                 <description />
-                <properties>
-                    <propertyGroup caption="Object list group">
-                        <property key="XPositionAttribute" type="attribute" required="true">
-                            <caption>XPosition (path)</caption>
-                            <description />
-                            <attributeTypes>
-                                <attributeType name="String" />
-                            </attributeTypes>
-                        </property>
-                        <property key="YPositionAttribute" type="attribute" required="true">
-                            <caption>YPosition (path)</caption>
-                            <description />
-                            <attributeTypes>
-                                <attributeType name="String" />
-                            </attributeTypes>
-                        </property>
-                        <property key="noteAttribute" type="attribute" required="true">
-                            <caption>Note (path)</caption>
-                            <description />
-                            <attributeTypes>
-                                <attributeType name="String" />
-                            </attributeTypes>
-                        </property>
-                    </propertyGroup>
-                </properties>
+            </property>
+            <property key="XPositionAttribute" type="attribute" required="false">
+                <caption>XPosition (path)</caption>
+                <description />
+                <attributeTypes>
+                    <attributeType name="String" />
+                </attributeTypes>
+            </property>
+            <property key="YPositionAttribute" type="attribute" required="false">
+                <caption>YPosition (path)</caption>
+                <description />
+                <attributeTypes>
+                    <attributeType name="String" />
+                </attributeTypes>
+            </property>
+            <property key="noteAttribute" type="attribute" required="false">
+                <caption>Note (path)</caption>
+                <description />
+                <attributeTypes>
+                    <attributeType name="String" />
+                </attributeTypes>
             </property>
         </propertyGroup>
         <propertyGroup caption="Events">
