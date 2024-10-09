@@ -14,12 +14,45 @@
     <icon />
     <properties>
         <propertyGroup caption="Data source">
-            <property key="imageAttribute" type="attribute" required="true">
-                <caption>Attribute (path)</caption>
+            <property key="ImageUrl" type="image" required="true">
+                <caption>Thumbs Up Image</caption>
+                <description>Select an image to be displayed in the widget.</description>
+            </property>
+            <property key="objectsDatasource" type="datasource" isList="true" required="false">
+                <caption>Selectable objects</caption>
+                <description />
+            </property>
+            <property key="XPositionAttribute" type="attribute" required="false">
+                <caption>XPosition (path)</caption>
                 <description />
                 <attributeTypes>
                     <attributeType name="String" />
                 </attributeTypes>
+            </property>
+            <property key="YPositionAttribute" type="attribute" required="false">
+                <caption>YPosition (path)</caption>
+                <description />
+                <attributeTypes>
+                    <attributeType name="String" />
+                </attributeTypes>
+            </property>
+            <property key="noteAttribute" type="attribute" required="false">
+                <caption>Note (path)</caption>
+                <description />
+                <attributeTypes>
+                    <attributeType name="String" />
+                </attributeTypes>
+            </property>
+        </propertyGroup>
+        <propertyGroup caption="Events">
+            <property key="markerAction" type="action" required="true">
+                <caption>onChange Marker Action</caption>
+                <description />
+            </property>
+
+            <property key="onChangeAction" type="action" required="true">
+                <caption>onChange Image afterction</caption>
+                <description>Action to trigger after uploading a file/image</description>
             </property>
         </propertyGroup>
     </properties>
