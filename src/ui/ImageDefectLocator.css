@@ -4,7 +4,6 @@ Place your custom CSS here
 
 .defect-icon {
     position: relative;
-    display: inline-block;
     font-size: 9px;
     color: white;
     border-radius: 50%;
@@ -12,7 +11,6 @@ Place your custom CSS here
     width: 20px;
     height: 20px;
     display: flex;
-    align-items: center;
     justify-content: center;
 }
 circle {
@@ -20,6 +18,11 @@ circle {
     height: 35px;
     border-radius: 50%;
     box-shadow: 0px 0px 1px 1px rgb(227, 96, 0);
+}
+.exclamation-icon {
+    color: white;
+    font-size: 12px;
+    font-weight: 400;
 }
 
 .pulse {
@@ -68,13 +71,18 @@ circle {
 }
 
 .defect-marker-description {
-    width: 200px;
-    background-color: white;
-    border: 1px solid rgba(0, 0, 0, 0.363);
-    border-radius: 10px;
-    padding: 5px 5px 5px 0;
-    box-shadow: 0 0 0 20px rgba(0, 0, 0, 0);
+    background-color: rgba(255, 255, 255, 0.8);
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    white-space: normal;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: auto;
+    max-width: 200px;
 }
+
 .marker-description-wrapper {
     height: 100%;
     max-height: 150px;
