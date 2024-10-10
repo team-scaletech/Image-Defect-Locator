@@ -30,7 +30,7 @@ export interface ImageDefectLocatorPreviewProps {
     styleObject?: CSSProperties;
     readOnly: boolean;
     renderMode?: "design" | "xray" | "structure";
-    ImageUrl: { type: "static"; imageUrl: string } | { type: "dynamic"; entity: string } | null;
+    ImageUrl: { type: "static"; imageUrl: string; } | { type: "dynamic"; entity: string; } | null;
     objectsDatasource: {} | { caption: string } | { type: string } | null;
     XPositionAttribute: string;
     YPositionAttribute: string;
