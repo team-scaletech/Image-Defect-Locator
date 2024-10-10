@@ -50,20 +50,33 @@ export const ImageDefectLocator: FC<ImageDefectLocatorContainerProps> = ({
     useEffect(() => {
         let datavalue: DefectsObjectList[] = [];
 
-        if (objectsDatasource) {
+        if (objectsDatasource && imageValue?.src) {
             try {
                 const { items } = objectsDatasource;
 
                 datavalue = items
-                    ? items.map((item: any) => {
-                          const defectAttributes = item[Object.getOwnPropertySymbols(item)[0]].jsonData.attributes;
+                    ? items
+                          .map((item: any) => {
+                              const defectAttributes = item[Object.getOwnPropertySymbols(item)[0]].jsonData.attributes;
 
-                          return {
-                              x: Number(defectAttributes.XPosition.value),
-                              y: Number(defectAttributes.YPosition.value),
-                              note: defectAttributes.Note.value || ""
-                          };
-                      })
+                              const xPos = defectAttributes.XPosition.value;
+                              const yPos = defectAttributes.YPosition.value;
+                              const note = defectAttributes.Note.value;
+
+                              // Return null if any required attribute is null
+                              if (xPos == null || yPos == null || note == null) {
+                                  return null;
+                              }
+
+                              console.warn("🚀 ~ useEffect ~ datavalue:", xPos);
+                              return {
+                                  x: Number(xPos),
+                                  y: Number(yPos),
+                                  note: note || ""
+                              };
+                          })
+                          // Filter out null values
+                          .filter((item): item is DefectsObjectList => item !== null)
                     : [];
 
                 const updatedImage = { ...imageValue, defects: datavalue };
