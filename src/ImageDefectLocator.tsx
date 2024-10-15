@@ -26,14 +26,14 @@ export const ImageDefectLocator: FC<ImageDefectLocatorContainerProps> = ({
     XPositionAttribute,
     YPositionAttribute,
     noteAttribute,
-    objectsDatasource
+    objectsDatasource,
+    class: customClass
 }) => {
     const nodeRef = useRef<HTMLDivElement>(null);
     const [imageValue, setImageValue] = useState<ImageData | null>(null);
 
     // Explicitly typing the state as DefectsObjectList[]
     const [defectsObjectList, setdefectsObjectList] = useState<DefectsObjectList[]>([]);
-
     useEffect(() => {
         const timeoutId = setTimeout(() => {
             const parentNode = nodeRef.current?.parentNode;
@@ -68,7 +68,6 @@ export const ImageDefectLocator: FC<ImageDefectLocatorContainerProps> = ({
                                   return null;
                               }
 
-                              console.warn("🚀 ~ useEffect ~ datavalue:", xPos);
                               return {
                                   x: Number(xPos),
                                   y: Number(yPos),
@@ -138,7 +137,13 @@ export const ImageDefectLocator: FC<ImageDefectLocatorContainerProps> = ({
 
     return (
         <div ref={nodeRef}>
-            {imageValue && <DefectLocatImage imageValue={imageValue} addDefectToImage={addDefectToImage} />}
+            {imageValue && (
+                <DefectLocatImage
+                    imageValue={imageValue}
+                    addDefectToImage={addDefectToImage}
+                    customClass={customClass}
+                />
+            )}
         </div>
     );
 };

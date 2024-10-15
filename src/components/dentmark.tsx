@@ -4,8 +4,9 @@ import { Defect, ImageData } from "src/ImageDefectLocator";
 interface DefectLocatorProps {
     imageValue: ImageData;
     addDefect: (defect: Defect) => void;
+    customClass: string;
 }
-const DentMarker: FC<DefectLocatorProps> = ({ imageValue, addDefect }) => {
+const DentMarker: FC<DefectLocatorProps> = ({ imageValue, addDefect, customClass }) => {
     const [hoveredDentIndex, setHoveredDentIndex] = useState<number | null>(null);
 
     const handleClick = (e: any) => {
@@ -31,7 +32,7 @@ const DentMarker: FC<DefectLocatorProps> = ({ imageValue, addDefect }) => {
     };
 
     return (
-        <div style={{ position: "relative" }}>
+        <div style={{ position: "relative" }} className={customClass}>
             <img
                 src={imageValue.src}
                 alt="Dent marker"
