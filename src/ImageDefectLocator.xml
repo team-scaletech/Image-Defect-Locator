@@ -22,7 +22,7 @@
                 <caption>Selectable objects</caption>
                 <description />
             </property>
-            <property key="XPositionAttribute" type="attribute" required="false">
+            <!-- <property key="XPositionAttribute" type="attribute" required="false">
                 <caption>XPosition (path)</caption>
                 <description />
                 <attributeTypes>
@@ -42,6 +42,43 @@
                 <attributeTypes>
                     <attributeType name="String" />
                 </attributeTypes>
+            </property> -->
+            <property key="selection" type="selection" dataSource="objectsDatasource">
+                <caption>Selection</caption>
+                <description />
+                <selectionTypes>
+                    <selectionType name="Multi" />
+                </selectionTypes>
+            </property>
+
+            <property key="myObject" type="object" isList="true" required="false">
+                <caption>My object list</caption>
+                <description />
+                <properties>
+                    <propertyGroup caption="Object list group">
+                        <property key="XPositionAttribute" type="attribute" required="false">
+                            <caption>XPosition (path)</caption>
+                            <description />
+                            <attributeTypes>
+                                <attributeType name="String" />
+                            </attributeTypes>
+                        </property>
+                        <property key="YPositionAttribute" type="attribute" required="false">
+                            <caption>YPosition (path)</caption>
+                            <description />
+                            <attributeTypes>
+                                <attributeType name="String" />
+                            </attributeTypes>
+                        </property>
+                        <property key="noteAttribute" type="attribute" required="false">
+                            <caption>Note (path)</caption>
+                            <description />
+                            <attributeTypes>
+                                <attributeType name="String" />
+                            </attributeTypes>
+                        </property>
+                    </propertyGroup>
+                </properties>
             </property>
         </propertyGroup>
         <propertyGroup caption="Events">

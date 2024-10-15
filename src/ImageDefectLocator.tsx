@@ -2,6 +2,8 @@ import { FC, useRef, useEffect, useState } from "react";
 import DefectLocatImage from "./components/defectLocator";
 
 import { ImageDefectLocatorContainerProps } from "../typings/ImageDefectLocatorProps";
+import { GUID } from "mendix";
+import { v4 as uuidv4 } from "uuid";
 
 import "./ui/ImageDefectLocator.css";
 export interface Defect {
@@ -22,14 +24,17 @@ export interface ImageData {
 export const ImageDefectLocator: FC<ImageDefectLocatorContainerProps> = ({
     ImageUrl,
     markerAction,
+    selection,
     onChangeAction,
-    XPositionAttribute,
-    YPositionAttribute,
-    noteAttribute,
+    myObject,
+    // XPositionAttribute,
+    // YPositionAttribute,
+    // noteAttribute,
     objectsDatasource
 }) => {
     const nodeRef = useRef<HTMLDivElement>(null);
     const [imageValue, setImageValue] = useState<ImageData | null>(null);
+    const [functionCount, setFunctionCount] = useState(0);
 
     // Explicitly typing the state as DefectsObjectList[]
     const [defectsObjectList, setdefectsObjectList] = useState<DefectsObjectList[]>([]);
@@ -68,7 +73,6 @@ export const ImageDefectLocator: FC<ImageDefectLocatorContainerProps> = ({
                                   return null;
                               }
 
-                              console.warn("🚀 ~ useEffect ~ datavalue:", xPos);
                               return {
                                   x: Number(xPos),
                                   y: Number(yPos),
@@ -112,29 +116,58 @@ export const ImageDefectLocator: FC<ImageDefectLocatorContainerProps> = ({
     };
 
     const addDefectToImage = (defect: Defect) => {
-        if (imageValue) {
+        if (imageValue && selection) {
             const updatedImage = { ...imageValue, defects: [...imageValue.defects, defect] };
 
             // Update the state with the new image
             setImageValue(updatedImage);
-            if (XPositionAttribute && YPositionAttribute && noteAttribute) {
+            const defectArray = [...imageValue.defects, defect];
+
+            // const defectArrayValue = defectArray.map(defect => ({
+            //     id: uuidv4() as GUID, // or use some unique identifier
+            //     x: defect.x,
+            //     y: defect.y,
+            //     note: defect.note
+            // }));
+            // console.warn("🚀 ~ defectArrayValue ~ defectArrayValue:", defectArrayValue);
+            const newObject = {
+                ...defect,
+                id: uuidv4() as GUID
+            };
+            console.warn("🚀 ~ addDefectToImage ~ newObject:", newObject);
+            // selection.selection.push(newObject);
+            selection.setSelection([newObject]);
+
+            // if (XPositionAttribute && YPositionAttribute && noteAttribute) {
+            //     const roundedX = defect.x.toString();
+            //     const roundedY = defect.y.toString();
+            //     XPositionAttribute.setTextValue(roundedX);
+            //     YPositionAttribute.setTextValue(roundedY);
+            //     noteAttribute.setTextValue(defect.note);
+
+            //     XPositionAttribute.universe;
+            //     if (markerAction) {
+            //         try {
+            //             markerAction.execute();
+            //         } catch (error) {
+            //             console.error("Failed to execute markerAction:", error);
+            //         }
+            //     } else {
+            //         console.warn("markerAction is not available or cannot be executed.");
+            //     }
+            // }
+            const defectObje = myObject[functionCount];
+            if (defectObje.XPositionAttribute && defectObje.YPositionAttribute && defectObje.noteAttribute) {
                 const roundedX = defect.x.toString();
                 const roundedY = defect.y.toString();
-                XPositionAttribute.setValue(roundedX);
-                YPositionAttribute.setValue(roundedY);
-                noteAttribute.setValue(defect.note);
-                if (markerAction) {
-                    try {
-                        markerAction.execute();
-                    } catch (error) {
-                        console.error("Failed to execute markerAction:", error);
-                    }
-                } else {
-                    console.warn("markerAction is not available or cannot be executed.");
-                }
+                defectObje.XPositionAttribute.setTextValue(roundedX);
+                defectObje.YPositionAttribute.setTextValue(roundedY);
+                defectObje.noteAttribute.setTextValue(defect.note);
             }
+            setFunctionCount(functionCount + 1);
         }
     };
+    console.warn("🚀 ~ selection:", selection?.selection);
 
     return (
         <div ref={nodeRef}>

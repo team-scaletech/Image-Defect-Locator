@@ -12,6 +12,7 @@ Place your custom CSS here
     height: 20px;
     display: flex;
     justify-content: center;
+    align-items: center;
 }
 circle {
     width: 35px;
@@ -23,6 +24,7 @@ circle {
     color: white;
     font-size: 12px;
     font-weight: 400;
+    margin: 0px;
 }
 
 .pulse {
