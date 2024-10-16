@@ -23,7 +23,7 @@
                 <description>
                     This property provides a list of objects that the widget will use to display markers or selectable
                     items. Each object should include properties such as coordinates or annotations for positioning and
-                    labeling.
+                    labeling.This property is only used when the widget is in the list view.
                 </description>
             </property>
             <property key="XPositionAttribute" type="attribute" required="false">
