@@ -16,8 +16,8 @@ export interface ImageDefectLocatorContainerProps {
     XPositionAttribute?: EditableValue<string>;
     YPositionAttribute?: EditableValue<string>;
     noteAttribute?: EditableValue<string>;
-    markerAction?: ActionValue;
     onChangeAction?: ActionValue;
+    markerAction?: ActionValue;
 }
 
 export interface ImageDefectLocatorPreviewProps {
@@ -35,6 +35,6 @@ export interface ImageDefectLocatorPreviewProps {
     XPositionAttribute: string;
     YPositionAttribute: string;
     noteAttribute: string;
-    markerAction: {} | null;
     onChangeAction: {} | null;
+    markerAction: {} | null;
 }
