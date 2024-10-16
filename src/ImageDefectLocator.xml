@@ -20,11 +20,7 @@
             </property>
             <property key="objectsDatasource" type="datasource" isList="true" required="false">
                 <caption>Selectable objects</caption>
-                <description>
-                    This property provides a list of objects that the widget will use to display markers or selectable
-                    items. Each object should include properties such as coordinates or annotations for positioning and
-                    labeling.This property is only used when the widget is in the list view.
-                </description>
+                <description>This property supplies a list of objects for displaying &#xA;markers or selectable items in the widget's list view</description>
             </property>
             <property key="XPositionAttribute" type="attribute" required="false">
                 <caption>XPosition (path)</caption>
@@ -55,11 +51,7 @@
             </property>
             <property key="markerAction" type="action" required="true">
                 <caption>onChange Marker Action</caption>
-                <description>
-                    This property defines the action to be executed when the marker state changes. It is triggered
-                    automatically whenever there is an update to the marker. The action specified here will determine
-                    the response to the change in marker state.
-                </description>
+                <description>Triggered when a marker state is updated.</description>
             </property>
         </propertyGroup>
     </properties>
