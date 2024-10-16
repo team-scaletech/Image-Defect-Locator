@@ -46,7 +46,7 @@
         </propertyGroup>
         <propertyGroup caption="Events">
             <property key="onChangeAction" type="action" required="true">
-                <caption>onChange Image afterction</caption>
+                <caption>onChange Image Action</caption>
                 <description>Action to trigger after uploading a file/image</description>
             </property>
             <property key="markerAction" type="action" required="true">
