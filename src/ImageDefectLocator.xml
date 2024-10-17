@@ -43,6 +43,11 @@
                     <attributeType name="String" />
                 </attributeTypes>
             </property>
+            <property key="isMarker" type="boolean" defaultValue="false">
+	            <caption>Editable</caption>
+	            <description>To mark the image select yes on editable section </description>
+            </property>
+
         </propertyGroup>
         <propertyGroup caption="Events">
             <property key="onChangeAction" type="action" required="true">

@@ -28,7 +28,8 @@ export const ImageDefectLocator: FC<ImageDefectLocatorContainerProps> = ({
     noteAttribute,
     objectsDatasource,
     class: customClass,
-    style
+    style,
+    isMarker
 }) => {
     const nodeRef = useRef<HTMLDivElement>(null);
     const [imageValue, setImageValue] = useState<ImageData | null>(null);
@@ -144,6 +145,7 @@ export const ImageDefectLocator: FC<ImageDefectLocatorContainerProps> = ({
                     addDefectToImage={addDefectToImage}
                     customClass={customClass}
                     style={style}
+                    isMarker={isMarker}
                 />
             )}
         </div>

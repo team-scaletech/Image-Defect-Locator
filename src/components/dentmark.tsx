@@ -5,8 +5,9 @@ interface DefectLocatorProps {
     imageValue: ImageData;
     addDefect: (defect: Defect) => void;
     customClass: string;
+    isMarker: boolean;
 }
-const DentMarker: FC<DefectLocatorProps> = ({ imageValue, addDefect, customClass }) => {
+const DentMarker: FC<DefectLocatorProps> = ({ imageValue, addDefect, customClass, isMarker }) => {
     const [hoveredDentIndex, setHoveredDentIndex] = useState<number | null>(null);
 
     const handleClick = (e: any) => {
@@ -37,7 +38,7 @@ const DentMarker: FC<DefectLocatorProps> = ({ imageValue, addDefect, customClass
                 src={imageValue.src}
                 alt="Dent marker"
                 style={{ width: "800px", height: "600px" }}
-                onClick={handleClick}
+                onClick={isMarker ? handleClick : undefined}
             />
             {/* Overlay the icons as HTML elements */}
             {imageValue.defects &&
