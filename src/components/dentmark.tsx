@@ -74,7 +74,7 @@ const DentMarker: FC<DefectLocatorProps> = ({ imageValue, addDefect, customClass
                         const boxWidth = Math.min(Math.max(textWidth + 20, 150), 200); // Limit the width
                         const boxHeight = 100; // Fixed height or calculate based on text
 
-                        const boxX = dent.x + 10;
+                        const boxX = dent.x + 6;
                         const boxY = dent.y - boxHeight;
 
                         const adjustedX = Math.min(Math.max(boxX, 0), 800 - boxWidth);

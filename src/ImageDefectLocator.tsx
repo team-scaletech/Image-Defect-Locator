@@ -52,7 +52,7 @@ export const ImageDefectLocator: FC<ImageDefectLocatorContainerProps> = ({
     useEffect(() => {
         let datavalue: DefectsObjectList[] = [];
 
-        if (objectsDatasource && imageValue?.src) {
+        if (objectsDatasource && objectsDatasource.items && objectsDatasource.items.length > 0 && imageValue?.src) {
             try {
                 const { items } = objectsDatasource;
 
