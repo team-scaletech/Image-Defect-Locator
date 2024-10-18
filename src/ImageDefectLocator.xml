@@ -50,11 +50,11 @@
 
         </propertyGroup>
         <propertyGroup caption="Events">
-            <property key="onChangeAction" type="action" required="true">
+            <property key="onChangeAction" type="action" required="false">
                 <caption>onChange Image Action</caption>
                 <description>Action to trigger after uploading a file/image</description>
             </property>
-            <property key="markerAction" type="action" required="true">
+            <property key="markerAction" type="action" required="false">
                 <caption>onChange Marker Action</caption>
                 <description>Triggered when a marker state is updated.</description>
             </property>
