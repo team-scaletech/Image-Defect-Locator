@@ -1,4 +1,4 @@
-import { FC, useRef, useEffect, useState } from "react";
+import { FC, useEffect, useState } from "react";
 import DefectLocatImage from "./components/defectLocator";
 
 import { ImageDefectLocatorContainerProps } from "../typings/ImageDefectLocatorProps";
