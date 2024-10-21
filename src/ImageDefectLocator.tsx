@@ -31,23 +31,10 @@ export const ImageDefectLocator: FC<ImageDefectLocatorContainerProps> = ({
     style,
     isMarker
 }) => {
-    const nodeRef = useRef<HTMLDivElement>(null);
     const [imageValue, setImageValue] = useState<ImageData>({ src: "", defects: [] });
 
     // Explicitly typing the state as DefectsObjectList[]
     const [defectsObjectList, setdefectsObjectList] = useState<DefectsObjectList[]>([]);
-    // useEffect(() => {
-    //     const timeoutId = setTimeout(() => {
-    //         const parentNode = nodeRef.current?.parentNode;
-    //         const uploader = parentNode?.querySelector("input[type=file]") as HTMLInputElement | null;
-
-    //         // if (uploader) {
-    //         //     uploader.onchange = onChange;
-    //         // }
-    //     }, 200);
-
-    //     return () => clearTimeout(timeoutId);
-    // }, []);
 
     useEffect(() => {
         let datavalue: DefectsObjectList[] = [];
@@ -106,12 +93,6 @@ export const ImageDefectLocator: FC<ImageDefectLocatorContainerProps> = ({
         }
     }, [ImageUrl?.value?.uri]);
 
-    // const onChange = () => {
-    //     if (onChangeAction) {
-    //         onChangeAction.execute();
-    //     }
-    // };
-
     const addDefectToImage = (defect: Defect) => {
         if (imageValue) {
             const updatedImage = { ...imageValue, defects: [...imageValue.defects, defect] };
@@ -138,7 +119,7 @@ export const ImageDefectLocator: FC<ImageDefectLocatorContainerProps> = ({
     };
 
     return (
-        <div ref={nodeRef}>
+        <div>
             {imageValue && (
                 <DefectLocatImage
                     imageValue={imageValue}
