@@ -2,7 +2,6 @@ import { FC, useRef, useEffect, useState } from "react";
 import DefectLocatImage from "./components/defectLocator";
 
 import { ImageDefectLocatorContainerProps } from "../typings/ImageDefectLocatorProps";
-import NoImage from "../src/assets/image/No_Image_Available.jpg";
 
 import "./ui/ImageDefectLocator.css";
 export interface Defect {
@@ -33,7 +32,7 @@ export const ImageDefectLocator: FC<ImageDefectLocatorContainerProps> = ({
     isMarker
 }) => {
     const nodeRef = useRef<HTMLDivElement>(null);
-    const [imageValue, setImageValue] = useState<ImageData>({ src: NoImage, defects: [] });
+    const [imageValue, setImageValue] = useState<ImageData>({ src: "", defects: [] });
 
     // Explicitly typing the state as DefectsObjectList[]
     const [defectsObjectList, setdefectsObjectList] = useState<DefectsObjectList[]>([]);

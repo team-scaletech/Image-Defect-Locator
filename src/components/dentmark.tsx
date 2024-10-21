@@ -1,5 +1,6 @@
 import { FC, useState } from "react";
 import { Defect, ImageData } from "src/ImageDefectLocator";
+import NoImage from "../assets/image/No_Image_Available.jpg";
 
 interface DefectLocatorProps {
     imageValue: ImageData;
@@ -34,12 +35,16 @@ const DentMarker: FC<DefectLocatorProps> = ({ imageValue, addDefect, customClass
 
     return (
         <div style={{ position: "relative" }} className={customClass}>
-            <img
-                src={imageValue.src}
-                alt="Dent marker"
-                style={{ width: "800px", height: "600px" }}
-                onClick={isMarker ? handleClick : undefined}
-            />
+            {imageValue.src ? (
+                <img
+                    src={imageValue.src}
+                    alt="Dent marker"
+                    style={{ width: "800px", height: "600px" }}
+                    onClick={isMarker ? handleClick : undefined}
+                />
+            ) : (
+                <img src={NoImage} alt="Dent marker" style={{ width: "800px", height: "600px" }} />
+            )}
             {/* Overlay the icons as HTML elements */}
             {imageValue.defects &&
                 imageValue.defects.map((dent: { x: number; y: number }, index: number) => (
